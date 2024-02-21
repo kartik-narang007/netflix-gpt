@@ -1,10 +1,7 @@
-import './App.css';
-
+import Body from './Components/Body';
 function App() {
   return (
-    <div className="App text-3xl font-bold text-center">
-      Namaste Everyone Let's Build NeflixGPT
-    </div>
+    <Body/>
   );
 }
 
