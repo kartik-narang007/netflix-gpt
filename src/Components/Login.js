@@ -118,18 +118,16 @@ const Login = () => {
   };
 
   return (
-    <div className="relative">
+    <div>
       <Header />
     
     {/* body background */}
 
 
-      <div className="relative">
-        <div className="bg-black w-full h-full absolute opacity-50 z-10 object-cover"></div>
+      <div className="absolute">
         <img
           src={BG_URL}
           alt="Netflix Background"
-          className="h-full w-full object-cover z-5"
         ></img>
       </div>
 
@@ -138,11 +136,11 @@ const Login = () => {
 
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute py-10 pl-16 pr-20 top-24 left-96 z-30 bg-black bg-opacity-85 rounded-sm w-4/12 transform translate-x-16"
+        className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
 
 
-        <h1 className="font-semibold text-white text-3xl py-4 mb-3">
+        <h1 className="font-bold text-3xl py-4">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
 

@@ -5,7 +5,6 @@ import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
     const movies = useSelector(store => store.movies?.nowPlayingMovies);
-    console.log(movies);
     if (!movies || movies.length === 0) return null; // No movies to display
 
     // Get a random index within the range of available movies
@@ -18,7 +17,7 @@ const MainContainer = () => {
     const { original_title, overview, id } = mainMovie;
 
     return (
-        <div className="w-screen">
+        <div className="w-[100%]">
             <VideoTitle title={original_title} overview={overview} />
             <VideoBackground id={id} />
         </div>

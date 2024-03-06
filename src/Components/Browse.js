@@ -8,7 +8,7 @@ const Browse = () => {
   useNowPlayingMovies();
 
   return (
-    <div>
+    <div className="w-[100%]">
       <Header />
 
     {/*
@@ -21,7 +21,7 @@ const Browse = () => {
      */}
 
      <MainContainer/>
-     {/* <SecondaryContainer/> */}
+     <SecondaryContainer/>
     </div>
   );
 };
