@@ -8,7 +8,7 @@ const Browse = () => {
   useNowPlayingMovies();
 
   return (
-    <div className="w-[100%]">
+    <div className="w-[98.7vw]">
       <Header />
 
     {/*

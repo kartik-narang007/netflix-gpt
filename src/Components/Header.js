@@ -49,16 +49,16 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute w-[100%] px-10 bg-gradient-to-b from-black z-30 flex justify-between">
-      <img src={LOGO_URL} alt="Netflix Logo" className="w-32 object-contain"></img>
+    <div className="absolute w-[100%] px-8 py-1 bg-gradient-to-b from-black z-30 flex justify-between">
+      <img src={LOGO_URL} alt="Netflix Logo" className="lg:w-24 lg:object-contain xl:w-28 xl:object-contain w-44"></img>
       {user && (
-        <div className="flex p-3">
+        <div className="flex lg:px-3 lg:py-4 xl:px-3 xl:py-4 p-5">
           <img
             src={user.photoURL || user.photoUrl}
             alt=""
-            className="w-12 h-12 pt-3 rounded-full"
+            className="w-8 h-8 mx-3 rounded-full object-contain"
           ></img>
-          <button onClick={handleSignOut} className="text-white text-sm pb-1">
+          <button onClick={handleSignOut} className="text-white text-sm">
             Sign Out
           </button>
         </div>

@@ -5,8 +5,8 @@ const SecondaryContainer = () => {
   // console.log(movies);
   return (
     movies && (
-      <div className="bg-black">
-        <div className="pl-12 relative -mt-44 z-20">
+      <div className="bg-black w-[100%]">
+        <div className="lg:-mt-44 xl:-mt-44 relative z-20">
           <MovieList title={"Now Playing"} movies={movies} />
           <MovieList title={"Trending"} movies={movies} />
           <MovieList title={"Popular"} movies={movies} />
