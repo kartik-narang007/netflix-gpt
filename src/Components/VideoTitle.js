@@ -13,9 +13,9 @@ const VideoTitle = (props) => {
   }
 
   return (
-    <div className="opacity-85 w-[100%] lg:pt-[11%] xl:pt-[12%] pt-[12%] aspect-video lg:px-10 xl:px-12 2xl:px-14 absolute z-20 text-white bg-gradient-to-r from-black">
-      <h1 className="lg:text-4xl xl:text-4xl 2xl:text-6xl font-bold">{title}</h1>
-      <p className="lg:py-2 xl:py-3 2xl:py-6 xl:text-md 2xl:text-lg w-1/4">{truncatedOverview}</p>
+    <div className="opacity-85 w-[100%] lg:pt-[11%] xl:pt-[12%] 2xl:pt-[14%] aspect-video lg:px-10 xl:px-12 2xl:px-14 absolute z-20 text-white bg-gradient-to-r from-black">
+      <h1 className="lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold">{title}</h1>
+      <p className="lg:py-2 xl:py-3 2xl:py-6 xl:text-md 2xl:text-lg w-1/3">{truncatedOverview}</p>
       <div>
         <button className="bg-white text-black rounded-[3px] py-2 px-8 mx-1 font-bold hover:bg-opacity-80">
           <span>

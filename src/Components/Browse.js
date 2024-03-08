@@ -3,15 +3,17 @@ import Header from "./Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import GptSearch from "./GptSearch";
+import { useSelector } from "react-redux";
 const Browse = () => {
-
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   useNowPlayingMovies();
 
   return (
-    <div className="w-[98.7vw]">
+    <div className="w-[98.7vw] 2xl:w-[98.8vw]">
       <Header />
 
-    {/*
+      {/*
         Main Container
           -- Video Background
           -- Video Title
@@ -19,9 +21,14 @@ const Browse = () => {
           - MovieList * n 
             -- MovieCards * n
      */}
-
-     <MainContainer/>
-     <SecondaryContainer/>
+      {showGptSearch ? (
+        <GptSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };

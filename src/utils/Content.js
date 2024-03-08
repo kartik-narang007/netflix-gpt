@@ -17,3 +17,17 @@ export const API_OPTIONS = {
 };
 
 export const IMG_URL = "https://image.tmdb.org/t/p/w780";
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hi", name: "हिन्दी" }, // Hindi
+  { identifier: "es", name: "Español" }, // Spanish
+  { identifier: "fr", name: "Français" }, // French
+  { identifier: "zh", name: "中文" }, // Chinese
+  { identifier: "ar", name: "العربية" }, // Arabic
+  { identifier: "ru", name: "Русский" }, // Russian
+  { identifier: "ja", name: "日本語" }, // Japanese
+  { identifier: "ko", name: "한국어" }, // Korean
+  { identifier: "de", name: "Deutsch" }, // German
+  { identifier: "it", name: "Italiano" } // Italian
+];
