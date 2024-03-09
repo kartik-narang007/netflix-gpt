@@ -31,3 +31,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "de", name: "Deutsch" }, // German
   { identifier: "it", name: "Italiano" } // Italian
 ];
+
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
