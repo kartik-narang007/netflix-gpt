@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/Content";
+import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/Constants";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { app } from "../utils/firebase";
+import { app } from "../services/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../stores/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { toggleGptSearchView } from "../utils/gptSlice";
-import {changeLanguage} from "../utils/configSlice";
+import { toggleGptSearchView } from "../stores/gptSlice";
+import {changeLanguage} from "../stores/configSlice";
 
 const auth = getAuth(app);
 

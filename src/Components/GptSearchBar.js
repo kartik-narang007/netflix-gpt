@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
-import openai from "../utils/openai";
-import { API_OPTIONS } from "../utils/Content";
-import{ addGptMovieResult} from "../utils/gptSlice";
+import openai from "../services/openai";
+import { API_OPTIONS } from "../utils/Constants";
+import{ addGptMovieResult} from "../stores/gptSlice";
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const langKey = useSelector((store) => store.config.lang);

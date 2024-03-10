@@ -1,18 +1,18 @@
 import React from "react";
-import Header from "./Header";
-import { BG_URL } from "../utils/Content";
+import Header from "../Components/Header";
+import { BG_URL } from "../utils/Constants";
 import { useState, useRef } from "react";
-import { checkValidate } from "../utils/Validate";
+import { checkValidate } from "../validator/Validate";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile
 } from "firebase/auth";
-import { app } from "../utils/firebase";
+import { app } from "../services/firebase";
 // import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../stores/userSlice";
 
 
 const Login = () => {
