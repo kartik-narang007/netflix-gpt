@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Components/Header";
+import Header from "../layout/Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "../Components/MainContainer";
 import SecondaryContainer from "../Components/SecondaryContainer";
