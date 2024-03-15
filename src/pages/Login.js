@@ -7,22 +7,19 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile
+  updateProfile,
 } from "firebase/auth";
 import { app } from "../services/firebase";
 // import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../stores/userSlice";
 
-
 const Login = () => {
-
-
-//states and variables and hooks
+  //states and variables and hooks
 
   const [isSignIn, setIsSignIn] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [authErrorMessage, setAuthErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [authErrorMessage, setAuthErrorMessage] = useState(null);
 
   const email = useRef(null);
   const password = useRef(null);
@@ -30,17 +27,13 @@ const Login = () => {
 
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-//functions
+  //functions
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
   };
 
-  
-
   const handleClick = async () => {
-
-
     // console.log("button clicked");
     const currentIsSignIn = isSignIn; // Capture the current value of isSignIn
     // console.log(currentIsSignIn);
@@ -48,19 +41,16 @@ const Login = () => {
     const auth = getAuth(app);
 
     try {
-
       if (!currentIsSignIn) {
-
         // console.log(currentIsSignIn);
 
         const message = checkValidate(
+          name.current.value,
           email.current.value,
           password.current.value
         );
 
-
         setErrorMessage(message);
-
 
         if (message) return;
         //SigninUp
@@ -74,28 +64,28 @@ const Login = () => {
         //Profile Updating
 
         updateProfile(user, {
-          displayName: name.current.value, photoURL: "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-1/337556254_524926676512960_8245061719891553978_n.jpg?stp=dst-jpg_p200x200&_nc_cat=101&ccb=1-7&_nc_sid=5740b7&_nc_ohc=8KGFy5OX0M0AX_a4nGA&_nc_ht=scontent-del1-1.xx&oh=00_AfD8AXrME1Qu6tKuYFNSJ2LXo30fGeE3mDrbQw9xJTktlQ&oe=65E7D1FC"
-        }).then(() => {
-          console.log(auth.currentUser);
-          const{uid, email, displayName, photoURL} = auth.currentUser;
-          dispatch(
-            addUser({
-              uid:uid,
-              email:email,
-              displayName:displayName,
-              photoURL:photoURL
-            })
-          )
-        }).catch((error) => {
-          setAuthErrorMessage(error.message);
-        });
+          displayName: name.current.value,
+          photoURL:
+            "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-1/337556254_524926676512960_8245061719891553978_n.jpg?stp=dst-jpg_p200x200&_nc_cat=101&ccb=1-7&_nc_sid=5740b7&_nc_ohc=8KGFy5OX0M0AX_a4nGA&_nc_ht=scontent-del1-1.xx&oh=00_AfD8AXrME1Qu6tKuYFNSJ2LXo30fGeE3mDrbQw9xJTktlQ&oe=65E7D1FC",
+        })
+          .then(() => {
+            console.log(auth.currentUser);
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                photoURL: photoURL,
+              })
+            );
+          })
+          .catch((error) => {
+            setAuthErrorMessage(error.message);
+          });
 
         // console.log(user);
-
-
       } else {
-
-
         // console.log(currentIsSignIn)
 
         //SignIn
@@ -108,7 +98,7 @@ const Login = () => {
         //after SigninIn
 
         const user = userCredential.user;
-        
+
         // console.log(user);
       }
     } catch (error) {
@@ -120,26 +110,19 @@ const Login = () => {
   return (
     <div>
       <Header />
-    
-    {/* body background */}
 
+      {/* body background */}
 
       <div className="absolute">
-        <img
-          src={BG_URL}
-          alt="Netflix Background"
-        ></img>
+        <img src={BG_URL} alt="Netflix Background"></img>
       </div>
 
-
-    {/* Login Form */}
+      {/* Login Form */}
 
       <form
         onSubmit={(e) => e.preventDefault()}
         className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
-
-
         <h1 className="font-bold text-3xl py-4">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
@@ -152,41 +135,46 @@ const Login = () => {
             ref={name}
           />
         )}
+        {!isSignIn && errorMessage?.name && (
+          <div className="error px-1 py-2 text-[#e87c03] text-xs">
+            {errorMessage?.name}
+          </div>
+        )}
         <input
           ref={email}
           type="text"
           placeholder="Enter Your E-mail"
-          className="text-white focus:outline-none focus:placeholder-transparent input py-3 px-5 my-3 w-full rounded-sm text-md"
+          className={`text-white focus:outline-none focus:placeholder-transparent input py-3 px-5 my-3 w-full rounded-sm text-md border-b-2 ${
+            errorMessage?.email ? "border-[#e87c03]" : "border-transparent"
+          }`}
         />
-
-
-        {!isSignIn && errorMessage === "E-mail ID is not valid" && (
-          <p className="text-md text-red-700">E-mail ID is not valid</p>
+        {errorMessage?.email && (
+          <div className="error px-1 py-2 text-[#e87c03] text-xs">
+            {errorMessage?.email}
+          </div>
         )}
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="text-white focus:outline-none focus:placeholder-transparent input py-3 px-5 my-3 w-full rounded-sm text-md "
+          className={`text-white focus:outline-none focus:placeholder-transparent input py-3 px-5 my-3 w-full rounded-sm text-md border-b-2 ${
+            errorMessage?.password ? "border-[#e87c03]" : "border-transparent"
+          }`}
         />
-
-        {!isSignIn && errorMessage === "Password is not valid" && (
-          <p className="text-md text-red-700">Password is not valid</p>
+        {errorMessage?.password && (
+          <div className="error px-1 py-2 text-[#e87c03] text-xs">
+            {errorMessage?.password}
+          </div>
         )}
 
         {isSignIn && <p className="text-md text-red-700">{authErrorMessage}</p>}
 
         <button
-
           onClick={handleClick}
           className="sign-in-button py-3 mt-8 w-full rounded-md text-white font-semibold"
-          
         >
-
           {isSignIn ? "Click Here to Sign In" : "Click Here to Sign Up"}
-
         </button>
-
 
         <p className="pt-6 text-gray-400">
           {!isSignIn ? "Account Already Exists? " : "New to Netflix? "}
@@ -197,10 +185,7 @@ const Login = () => {
             {!isSignIn ? "Sign In Now" : "Sign Up Now"}
           </span>
         </p>
-
-
       </form>
-
     </div>
   );
 };
